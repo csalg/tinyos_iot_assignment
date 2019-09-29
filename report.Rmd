@@ -1,0 +1,30 @@
+---
+title: "A stateless protocol for mote-mote remote LED lighting"
+subtitle: "Assignment 2 Report"
+author:
+  - Carlos Perez-Guerra (118033990013)
+  - Christopher Harth-Kitzerow (J11903099005)
+  - Christian Olliver Hegeler (J11903099008)
+output: pdf_document
+---
+
+
+# Overview
+In this report we present our idea and implementation for a stateless protocol for mote-mote remote LED lighting. In a network of motes, each mote can be either a slave or a master. The idea is quite simple:
+
+- Slave nodes broadcast a packet with a unique ID every 250ms (this latency can be adjusted).
+
+- Master nodes map this unique ID to a LED which is idempotently turned on. Master nodes reset LEDs every 3000ms.
+
+Advantages of our approach:
+
+* *Separation of concerns*: Master nodes only need to listen and slave nodes only need to send. Their concerns are completely decoupled.
+
+* *Statelessness*. An array with which nodes are active is not necessary on the master nodes, nor do the slave nodes know whether their packets have been received. Hence this protocol is completely stateless, greatly simplifying implementation and maintenance.
+
+* *Idempotency*. A slave node can send packets as often as it wants, but this will have no effect on the master node after its LED-mapping is turned on.
+
+# Setup instructions
+
+Three folders are provided: one for the master node and two for the slave nodes. All that is needed is compiling the code to the mote terminal (usually /dev/USB30).
+
