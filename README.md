@@ -1,0 +1,1 @@
+This is a simple app demonstrating mote-mote communication with Telosb TinyOS devices. GIven a master node and two slaves, different LEDs will light up depending on how many slave nodes are connected. A very simple assignment written in NesC (a superset of C) for IoT class.
